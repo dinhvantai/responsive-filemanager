@@ -74,7 +74,7 @@ $config = array(
 	| with start and final /
 	|
 	*/
-	'upload_dir' => '/source/',
+	'upload_dir' => '/uploads/filemanager/source/',
 	/*
 	|--------------------------------------------------------------------------
 	| relative path from filemanager folder to upload folder
@@ -83,7 +83,7 @@ $config = array(
 	| with final /
 	|
 	*/
-	'current_path' => '../source/',
+	'current_path' => '../../../uploads/filemanager/source/',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -94,7 +94,7 @@ $config = array(
 	| DO NOT put inside upload folder
 	|
 	*/
-	'thumbs_base_path' => '../thumbs/',
+	'thumbs_base_path' => '../../../uploads/filemanager/thumbs/',
 
 
 	/*
@@ -426,6 +426,15 @@ $config = array(
 	'remember_text_filter'                    => false,
 
 );
+
+
+// Create dir if not Exist
+if (!is_dir($config['current_path'])) {
+	mkdir($config['current_path'], 0777, true);
+}
+if (!is_dir($config['thumbs_base_path'])) {
+	mkdir($config['thumbs_base_path'], 0777, true);
+}
 
 return array_merge(
 	$config,
